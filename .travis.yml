@@ -22,7 +22,7 @@ before_script:
   - cp config/cms.php config/cms.php.testing
   - mv config/cms.php.testing config/testing/cms.php
   - cd plugins/bedard/contact
-  - composer update
+  - composer install
 
 script:
   - mkdir -p build/logs
