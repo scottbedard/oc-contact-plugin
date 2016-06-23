@@ -1,0 +1,11 @@
+# ===================================
+#  List Column Definitions
+# ===================================
+
+columns:
+    index:
+        label: bedard.contact::lang.subjects.index
+        width: 100px
+
+    name:
+        label: bedard.contact::lang.subjects.model

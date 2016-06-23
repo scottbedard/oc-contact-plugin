@@ -1,0 +1,7 @@
+# ===================================
+#  Form Field Definitions
+# ===================================
+
+fields:
+    name:
+        label: bedard.contact::lang.subjects.model

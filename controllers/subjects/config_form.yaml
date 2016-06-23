@@ -1,0 +1,31 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+# Record name
+name: Subject
+
+# Model Form Field configuration
+form: $/bedard/contact/models/subject/fields.yaml
+
+# Model Class name
+modelClass: Bedard\Contact\Models\Subject
+
+# Default redirect location
+defaultRedirect: bedard/contact/subjects
+
+# Create page
+create:
+    title: Create Subject
+    redirect: bedard/contact/subjects/update/:id
+    redirectClose: bedard/contact/subjects
+
+# Update page
+update:
+    title: Edit Subject
+    redirect: bedard/contact/subjects
+    redirectClose: bedard/contact/subjects
+
+# Preview page
+preview:
+    title: Preview Subject

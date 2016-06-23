@@ -1,0 +1,27 @@
+{
+    "name": "bedard/contact",
+    "description": "A simple contact plugin for OctoberCMS.",
+    "homepage": "http://scottbedard.net/",
+    "keywords": ["octobercms", "contact"],
+    "authors": [
+        {
+            "name": "Scott Bedard",
+            "email": "scott@scottbedard.net"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Bedard\\Contact\\Tests\\": "tests/"
+        }
+    },
+    "require-dev": {
+        "phpunit/phpunit": "4.8.*@dev",
+        "fzaninotto/faker": "1.5.*",
+        "satooshi/php-coveralls": "~1.0"
+    },
+    "require": {
+        "php": ">=5.4.0",
+        "owl/list-delete": "~1.0@dev",
+        "owl/treesort": "~1.0@dev"
+    }
+}

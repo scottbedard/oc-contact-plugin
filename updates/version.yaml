@@ -1,0 +1,5 @@
+1.0.1:
+  - First version of Contact plugin
+  - create_messages_table.php
+  - create_subjects_table.php
+  - dev_seeder.php
