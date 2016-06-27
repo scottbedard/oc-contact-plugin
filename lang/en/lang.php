@@ -31,8 +31,8 @@ return [
     //
     'subjects' => [
         'controller' => 'Subjects',
-        'index' => 'Index',
         'model' => 'Subject',
+        'order' => 'Order',
         'reorder' => [
             'list_header_button' => 'Re-order subjects',
             'popup_header' => 'Re-order subjects',

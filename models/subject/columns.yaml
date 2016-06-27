@@ -4,8 +4,9 @@
 
 columns:
     index:
-        label: bedard.contact::lang.subjects.index
+        label: bedard.contact::lang.subjects.order
         width: 100px
 
     name:
         label: bedard.contact::lang.subjects.model
+        searchable: true

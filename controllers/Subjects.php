@@ -1,6 +1,7 @@
 <?php namespace Bedard\Contact\Controllers;
 
-use Queue;
+use Lang;
+use Flash;
 use BackendMenu;
 use Backend\Classes\Controller;
 use Bedard\Contact\Models\Subject;
@@ -40,6 +41,7 @@ class Subjects extends Controller
     public function afterListDelete()
     {
         Subject::reindex();
+        Flash::success(Lang::get('backend::lang.list.delete_selected_success'));
         $this->listRefresh();
     }
 }
