@@ -23,7 +23,13 @@ return [
     //
     'messages' => [
         'controller' => 'Messages',
+        'email' => 'Email Address',
+        'from' => 'From',
         'model' => 'Message',
+        'read' => 'Read :date',
+        'sent_at' => 'Date Sent',
+        'status' => 'Status',
+        'unread' => 'Not read',
     ],
 
     //

@@ -3,6 +3,20 @@
 # ===================================
 
 columns:
-    id:
-        label: ID
+    name:
+        label: bedard.contact::lang.messages.from
         searchable: true
+
+    email:
+        label: bedard.contact::lang.messages.email
+        searchable: true
+
+    is_read:
+        label: bedard.contact::lang.messages.status
+        type: partial
+        path: $/bedard/contact/models/message/_status.htm
+        searchable: false
+
+    created_at:
+        label: bedard.contact::lang.messages.sent_at
+        type: datetime

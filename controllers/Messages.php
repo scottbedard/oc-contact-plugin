@@ -25,4 +25,16 @@ class Messages extends Controller
 
         BackendMenu::setContext('Bedard.Contact', 'contact', 'messages');
     }
+
+
+    /**
+     * Extend the list query
+     *
+     * @param  \Illuminate\Database\Query\Builder $query
+     * @return \Illuminate\Database\Query\Builder
+     */
+    public function listExtendQuery($query)
+    {
+        $query->selectIsRead();
+    }
 }
