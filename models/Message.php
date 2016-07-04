@@ -61,11 +61,20 @@ class Message extends Model
 
     public function afterCreate()
     {
-        // @todo... grab mail template and send it
-        // Mail::send('acme.blog::mail.message', $vars, function($message) {
-        //     $message->to(Settings::get('send_email'), Settings::get('send_name'));
-        //     $message->subject($this->subjectText);
-        // });
+        $vars = $this->getMailVars();
+        Mail::send('bedard.contact::mail.message', $vars, function($message) {
+            // @todo: Allow subjects to have unique recipients
+            $message->to(Settings::get('send_email'), Settings::get('send_name'));
+            $message->subject($this->subjectText);
+        });
+    }
+
+    protected function getMailVars()
+    {
+        return [
+            'subject' => $this->subjectText,
+            'message' => $this->message,
+        ];
     }
 
     public function getReadAtListColumnAttribute()

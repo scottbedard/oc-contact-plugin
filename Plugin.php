@@ -51,6 +51,22 @@ class Plugin extends PluginBase
                 'tab'   => 'bedard.contact::lang.plugin.name',
                 'label' => 'bedard.contact::lang.permissions.subjects',
             ],
+            'bedard.contact.settings' => [
+                'tab'   => 'bedard.contact::lang.plugin.name',
+                'label' => 'bedard.contact::lang.permissions.settings',
+            ],
+        ];
+    }
+
+    /**
+     * Register mail templates
+     *
+     * @return array
+     */
+    public function registerMailTemplates()
+    {
+        return [
+            'bedard.contact::mail.message' => 'Send a message',
         ];
     }
 
@@ -105,7 +121,7 @@ class Plugin extends PluginBase
                 'description'   => 'bedard.contact::lang.settings.description',
                 'category'      => 'bedard.contact::lang.plugin.name',
                 'class'         => 'Bedard\Contact\Models\Settings',
-                'permissions'   => ['bedard.contact.access_settings'],
+                'permissions'   => ['bedard.contact.settings'],
                 'icon'          => 'icon-cog',
                 'order'         => 100,
             ],

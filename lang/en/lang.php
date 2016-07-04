@@ -15,6 +15,7 @@ return [
     //
     'permissions' => [
         'messages' => 'Read & manage messages',
+        'settings' => 'Manage contact settings',
         'subjects' => 'Manage subjects',
     ],
 
