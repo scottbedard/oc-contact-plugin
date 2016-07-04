@@ -1,0 +1,12 @@
+# ===================================
+#  Form Field Definitions
+# ===================================
+
+fields:
+    send_email:
+        label: bedard.contact::lang.settings.send_email
+        span: left
+
+    send_name:
+        label: bedard.contact::lang.settings.send_name
+        span: right

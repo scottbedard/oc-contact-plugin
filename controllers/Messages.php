@@ -2,6 +2,10 @@
 
 use BackendMenu;
 use Backend\Classes\Controller;
+use Bedard\Contact\Models\Message;
+use Carbon\Carbon;
+use Flash;
+use Lang;
 
 /**
  * Messages Back-end Controller
@@ -26,15 +30,28 @@ class Messages extends Controller
         BackendMenu::setContext('Bedard.Contact', 'contact', 'messages');
     }
 
-
     /**
-     * Extend the list query
+     * Mark the selected messages as read
      *
-     * @param  \Illuminate\Database\Query\Builder $query
-     * @return \Illuminate\Database\Query\Builder
+     * @return void|array
      */
-    public function listExtendQuery($query)
+    public function index_onMarkAsRead()
     {
-        $query->selectIsRead();
+        $checkedIds = post('checked');
+        if (!$checkedIds || !is_array($checkedIds) || count($checkedIds) === 0) {
+            return;
+        }
+
+        $now = Carbon::now();
+        foreach ($checkedIds as $id) {
+            $message = Message::find($id);
+            if ($message->read_at === null) {
+                $message->read_at = $now;
+                $message->save();
+            }
+        }
+
+        Flash::success(Lang::get('bedard.contact::lang.messages.mark_as_read_success'));
+        return $this->listRefresh();
     }
 }

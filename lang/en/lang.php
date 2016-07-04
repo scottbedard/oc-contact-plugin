@@ -25,11 +25,23 @@ return [
         'controller' => 'Messages',
         'email' => 'Email Address',
         'from' => 'From',
+        'mark_as_read' => 'Mark as read',
+        'mark_as_read_success' => 'Messages successfully marked as read.',
         'model' => 'Message',
         'read' => 'Read :date',
         'sent_at' => 'Date Sent',
         'status' => 'Status',
         'unread' => 'Not read',
+    ],
+
+    //
+    // Settings
+    //
+    'settings' => [
+        'controller' => 'Settings',
+        'description' => 'Manage contact settings',
+        'send_email' => 'Send to email address',
+        'send_name' => 'Sender name',
     ],
 
     //

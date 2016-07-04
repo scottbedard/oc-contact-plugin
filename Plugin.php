@@ -81,7 +81,33 @@ class Plugin extends PluginBase
                         'url'           => Backend::url('bedard/contact/subjects'),
                         'permissions'   => ['bedard.contact.subjects'],
                     ],
+                    'settings' => [
+                        'label'         => 'bedard.contact::lang.settings.controller',
+                        'icon'          => 'icon-cog',
+                        'url'           => Backend::url('system/settings/update/bedard/contact/settings'),
+                        'permissions'   => ['bedard.contact.settings'],
+                    ],
                 ],
+            ],
+        ];
+    }
+
+    /**
+     * Register settings pages
+     *
+     * @return  array
+     */
+    public function registerSettings()
+    {
+        return [
+            'settings' => [
+                'label'         => 'bedard.contact::lang.settings.controller',
+                'description'   => 'bedard.contact::lang.settings.description',
+                'category'      => 'bedard.contact::lang.plugin.name',
+                'class'         => 'Bedard\Contact\Models\Settings',
+                'permissions'   => ['bedard.contact.access_settings'],
+                'icon'          => 'icon-cog',
+                'order'         => 100,
             ],
         ];
     }

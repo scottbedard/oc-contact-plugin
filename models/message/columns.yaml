@@ -11,7 +11,7 @@ columns:
         label: bedard.contact::lang.messages.email
         searchable: true
 
-    is_read:
+    read_at:
         label: bedard.contact::lang.messages.status
         type: partial
         path: $/bedard/contact/models/message/_status.htm

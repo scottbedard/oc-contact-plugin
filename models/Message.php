@@ -1,7 +1,9 @@
 <?php namespace Bedard\Contact\Models;
 
 use Lang;
+use Mail;
 use Model;
+use Bedard\Contact\Models\Settings;
 
 /**
  * Message Model
@@ -57,6 +59,15 @@ class Message extends Model
         'message' => 'required',
     ];
 
+    public function afterCreate()
+    {
+        // @todo... grab mail template and send it
+        // Mail::send('acme.blog::mail.message', $vars, function($message) {
+        //     $message->to(Settings::get('send_email'), Settings::get('send_name'));
+        //     $message->subject($this->subjectText);
+        // });
+    }
+
     public function getReadAtListColumnAttribute()
     {
         $icon = $this->read_at === null
@@ -68,18 +79,5 @@ class Message extends Model
             : Lang::get('bedard.contact::lang.messages.read', ['date' => $this->read_at->diffForHumans() ]);
 
         return "<i class='{$icon}'></i> <span>{$string}</span>";
-    }
-
-    /**
-     *
-     *
-     * @param  \October\Rain\Database\Builder   $query
-     * @return \October\Rain\Database\Builder
-     */
-    public function scopeSelectIsRead($query)
-    {
-        $grammar = $query->getQuery()->getGrammar();
-        $read_at = $grammar->wrap($this->table . '.read_at');
-        return $query->selectSubquery("CASE WHEN ({$read_at} IS NULL) THEN 0 ELSE 1 END", 'is_read');
     }
 }
