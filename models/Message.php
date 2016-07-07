@@ -10,8 +10,7 @@ use Bedard\Contact\Models\Settings;
  */
 class Message extends Model
 {
-    use \Bedard\Contact\Traits\Subqueryable,
-        \October\Rain\Database\Traits\Validation;
+    use \October\Rain\Database\Traits\Validation;
 
     /**
      * @var string The database table used by the model.
@@ -29,7 +28,7 @@ class Message extends Model
     protected $fillable = [
         'name',
         'email',
-        'message',
+        'body',
         'subject_id',
         'subject_text',
     ];
@@ -56,24 +55,19 @@ class Message extends Model
     public $rules = [
         'name' => 'required',
         'email' => 'required|email',
-        'message' => 'required',
+        'body' => 'required',
     ];
 
     public function afterCreate()
     {
-        $vars = $this->getMailVars();
-        Mail::send('bedard.contact::mail.message', $vars, function($message) {
-            // @todo: Allow subjects to have unique recipients
-            $message->to(Settings::get('send_email'), Settings::get('send_name'));
-            $message->subject($this->subjectText);
-        });
+        $this->sendEmail();
     }
 
     protected function getMailVars()
     {
         return [
             'subject' => $this->subjectText,
-            'message' => $this->message,
+            'body' => $this->body,
         ];
     }
 
@@ -88,5 +82,15 @@ class Message extends Model
             : Lang::get('bedard.contact::lang.messages.read', ['date' => $this->read_at->diffForHumans() ]);
 
         return "<i class='{$icon}'></i> <span>{$string}</span>";
+    }
+
+    public function sendEmail()
+    {
+        $vars = $this->getMailVars();
+        Mail::send('bedard.contact::mail.message', $vars, function($message) {
+            // @todo: Allow subjects to have unique recipients
+            $message->to(Settings::get('send_email'), Settings::get('send_name'));
+            $message->subject($this->subjectText);
+        });
     }
 }
