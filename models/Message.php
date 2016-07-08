@@ -58,11 +58,6 @@ class Message extends Model
         'body' => 'required',
     ];
 
-    public function afterCreate()
-    {
-        $this->sendEmail();
-    }
-
     protected function getMailVars()
     {
         return [
@@ -73,18 +68,23 @@ class Message extends Model
 
     public function getReadAtListColumnAttribute()
     {
-        $icon = $this->read_at === null
-            ? 'icon-minus'
-            : 'icon-check';
+        $icon = 'icon-minus';
+        $read = Lang::get('bedard.contact::lang.messages.unread');
 
-        $string = $this->read_at === null
-            ? Lang::get('bedard.contact::lang.messages.unread')
-            : Lang::get('bedard.contact::lang.messages.read', ['date' => $this->read_at->diffForHumans() ]);
+        if ($this->read_at !== null) {
+            $icon = 'icon-check';
+            $read = Lang::get('bedard.contact::lang.messages.read', ['date' => $this->read_at->diffForHumans() ]);
+        }
 
-        return "<i class='{$icon}'></i> <span>{$string}</span>";
+        return "<i class='{ $icon }'></i> <span>{ $read }</span>";
     }
 
-    public function sendEmail()
+    /**
+     * Send the message
+     *
+     * @return void
+     */
+    public function send()
     {
         $vars = $this->getMailVars();
         Mail::send('bedard.contact::mail.message', $vars, function($message) {
