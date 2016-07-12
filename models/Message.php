@@ -114,11 +114,12 @@ class Message extends Model
      */
     public function send()
     {
-        $vars = $this->getMailVars();
-        Mail::send('bedard.contact::mail.message', $vars, function($message) {
-            // @todo: Allow subjects to have unique recipients
-            $message->to(Settings::get('send_email'), Settings::get('send_name'));
-            $message->subject($this->subjectText);
-        });
+        // @todo: re-enable mailed
+        // $vars = $this->getMailVars();
+        // Mail::send('bedard.contact::mail.message', $vars, function($message) {
+        //     // @todo: Allow subjects to have unique recipients
+        //     $message->to(Settings::get('send_email'), Settings::get('send_name'));
+        //     $message->subject($this->subjectText);
+        // });
     }
 }
