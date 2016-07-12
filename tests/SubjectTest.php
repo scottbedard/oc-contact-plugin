@@ -4,7 +4,7 @@ use Exception;
 use PluginTestCase;
 use Bedard\Contact\Models\Subject;
 
-class MessageTest extends PluginTestCase
+class SubjectTest extends PluginTestCase
 {
     public function test_subjects_increment_their_index_when_created()
     {

@@ -12,7 +12,7 @@ modelClass: Bedard\Contact\Models\Message
 title: Manage Messages
 
 # Link URL for each record
-recordUrl: bedard/contact/messages/update/:id
+recordUrl: bedard/contact/messages/read/:id
 
 # Message to display if the list is empty
 noRecordsMessage: backend::lang.list.no_records

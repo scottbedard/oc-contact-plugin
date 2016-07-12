@@ -12,10 +12,10 @@ class CreateMessagesTable extends Migration
         {
             $table->engine = 'InnoDB';
             $table->increments('id');
-            $table->string('name');
-            $table->string('email');
+            $table->string('name')->default('');
+            $table->string('email')->default('');
             $table->integer('subject_id')->unsigned()->nullable();
-            $table->string('subject_text');
+            $table->string('subject_text')->default('');
             $table->text('body');
             $table->timestamp('read_at')->nullable();
             $table->timestamps();

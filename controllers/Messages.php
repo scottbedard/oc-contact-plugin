@@ -3,7 +3,6 @@
 use BackendMenu;
 use Backend\Classes\Controller;
 use Bedard\Contact\Models\Message;
-use Carbon\Carbon;
 use Flash;
 use Lang;
 
@@ -38,20 +37,24 @@ class Messages extends Controller
     public function index_onMarkAsRead()
     {
         $checkedIds = post('checked');
+
         if (!$checkedIds || !is_array($checkedIds) || count($checkedIds) === 0) {
             return;
         }
 
-        $now = Carbon::now();
         foreach ($checkedIds as $id) {
             $message = Message::find($id);
-            if ($message->read_at === null) {
-                $message->read_at = $now;
-                $message->save();
-            }
+            $message->markAsRead();
+            $message->save();
         }
 
         Flash::success(Lang::get('bedard.contact::lang.messages.mark_as_read_success'));
         return $this->listRefresh();
+    }
+
+    public function read($id)
+    {
+        $this->vars['message'] = Message::read($id);
+        $this->pageTitle = Lang::get('bedard.contact::lang.messages.read_message');
     }
 }

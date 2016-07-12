@@ -1,9 +1,10 @@
 <?php namespace Bedard\Contact\Models;
 
+use Bedard\Contact\Models\Settings;
+use Carbon\Carbon;
 use Lang;
 use Mail;
 use Model;
-use Bedard\Contact\Models\Settings;
 
 /**
  * Message Model
@@ -77,6 +78,33 @@ class Message extends Model
         }
 
         return "<i class='{ $icon }'></i> <span>{ $read }</span>";
+    }
+
+    /**
+     * Update a message's read_at timestamp if it is null
+     *
+     * @return void
+     */
+    public function markAsRead()
+    {
+        if ($this->read_at === null) {
+            $this->read_at = Carbon::now();
+        }
+    }
+
+    /**
+     * Fetch a message and mark it as read
+     *
+     * @param   integer                         $id     The message the find and read
+     * @return  \Bedard\Contact\Models\Message
+     */
+    public static function read($id)
+    {
+        $message = self::find($id);
+        $message->markAsRead();
+        $message->save();
+
+        return $message;
     }
 
     /**
