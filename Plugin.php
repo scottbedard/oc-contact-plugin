@@ -109,6 +109,21 @@ class Plugin extends PluginBase
     }
 
     /**
+     * Register report widgets
+     *
+     * @return array
+     */
+    public function registerReportWidgets()
+    {
+        return [
+            'Bedard\Contact\ReportWidgets\Overview' => [
+                'label'     => 'bedard.contact::lang.overview.label',
+                'context'   => 'dashboard'
+            ],
+        ];
+    }
+
+    /**
      * Register settings pages
      *
      * @return  array

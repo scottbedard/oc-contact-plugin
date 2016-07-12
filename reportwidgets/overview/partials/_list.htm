@@ -1,0 +1,24 @@
+<div class="control-list">
+    <table class="table data">
+        <thead>
+            <tr>
+                <th><span><?= e(trans('bedard.contact::lang.subjects.model')) ?></span></th>
+                <th><span><?= e(trans('bedard.contact::lang.messages.from')) ?></span></th>
+                <th><span><?= e(trans('bedard.contact::lang.messages.sent_at')) ?></span></th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach ($messages as $message): ?>
+                <tr data-control="rowlink" class="rowlink">
+                    <td data-title="Subject">
+                        <a href="<?= $message->getBackendUrl() ?>">
+                            <?= $message->subject_text ?>
+                        </a>
+                    </td>
+                    <td data-title="Name"><?= $message->name ?></td>
+                    <td data-title="Created"><?= $message->created_at ?></td>
+                </tr>
+            <?php endforeach ?>
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,16 @@
+<div class="report-widget">
+    <h3><?= e($this->property('title')) ?></h3>
+    <?php if (!isset($error)): ?>
+        <?php if ($messages->count() > 0): ?>
+            <?= $this->makePartial('list', ['messages' => $messages]) ?>
+        <?php else: ?>
+            <div class="callout callout-info no-subheader">
+                <div class="content">
+                    <p><?= e(trans('bedard.contact::lang.overview.no_unread')) ?></p>
+                </div>
+            </div>
+        <?php endif ?>
+    <?php else: ?>
+        <p class="flash-message static error"><?= e($error) ?></p>
+    <?php endif ?>
+</div>

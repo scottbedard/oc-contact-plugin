@@ -41,6 +41,16 @@ return [
     ],
 
     //
+    // Overview report widget
+    //
+    'overview' => [
+        'default_title' => 'Unread messages',
+        'label' => 'Unread messages',
+        'no_unread' => 'There are no unread messages.',
+    ],
+
+
+    //
     // Settings
     //
     'settings' => [

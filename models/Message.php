@@ -1,5 +1,6 @@
 <?php namespace Bedard\Contact\Models;
 
+use Backend;
 use Bedard\Contact\Models\Settings;
 use Carbon\Carbon;
 use Lang;
@@ -59,6 +60,16 @@ class Message extends Model
         'body' => 'required',
     ];
 
+    /**
+     * Get a message's backend url
+     *
+     * @return string
+     */
+    public function getBackendUrl()
+    {
+        return Backend::url("bedard/contact/messages/read/{$this->id}");
+    }
+
     public function getMailVars()
     {
         return [
@@ -105,6 +116,28 @@ class Message extends Model
         $message->save();
 
         return $message;
+    }
+
+    /**
+     * Order by newest first
+     *
+     * @param  \October\Rain\Database\Builder   query
+     * @return \October\Rain\Database\Builder
+     */
+    public function scopeNewestFirst($query)
+    {
+        return $query->orderBy('created_at', 'desc');
+    }
+
+    /**
+     * Select unread messages
+     *
+     * @param  \October\Rain\Database\Builder   query
+     * @return \October\Rain\Database\Builder
+     */
+    public function scopeUnread($query)
+    {
+        return $query->where('read_at', null);
     }
 
     /**
