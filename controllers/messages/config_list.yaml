@@ -5,6 +5,9 @@
 # Model List Column configuration
 list: $/bedard/contact/models/message/columns.yaml
 
+# List filter configuration
+filter: config_filter.yaml
+
 # Model Class name
 modelClass: Bedard\Contact\Models\Message
 

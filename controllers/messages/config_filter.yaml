@@ -1,0 +1,16 @@
+# ===================================
+# Filter Scope Definitions
+# ===================================
+
+scopes:
+
+    subject:
+        label: bedard.contact::lang.messages.filter_subject
+        modelClass: Bedard\Contact\Models\Subject
+        conditions: subject_id in (:filtered)
+        nameFrom: name
+
+    unread:
+        label: bedard.contact::lang.messages.filter_unread
+        type: checkbox
+        conditions: read_at is null

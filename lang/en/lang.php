@@ -25,6 +25,8 @@ return [
     'messages' => [
         'controller' => 'Messages',
         'email' => 'Email Address',
+        'filter_subject' => 'Subjects',
+        'filter_unread' => 'Only show unread',
         'from' => 'From',
         'id' => 'ID',
         'mark_as_read' => 'Mark as read',
