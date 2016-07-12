@@ -30,7 +30,7 @@ return [
         'mark_as_read' => 'Mark as read',
         'mark_as_read_success' => 'Messages successfully marked as read.',
         'model' => 'Message',
-        'read_date' => 'Read :date',
+        'read_at_date' => 'Read :date',
         'read_message' => 'Read message',
         'sent_at' => 'Date Sent',
         'status' => 'Status',

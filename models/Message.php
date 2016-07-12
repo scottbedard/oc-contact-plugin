@@ -59,10 +59,10 @@ class Message extends Model
         'body' => 'required',
     ];
 
-    protected function getMailVars()
+    public function getMailVars()
     {
         return [
-            'subject' => $this->subjectText,
+            'subject' => $this->subject_text,
             'body' => $this->body,
         ];
     }
@@ -74,10 +74,10 @@ class Message extends Model
 
         if ($this->read_at !== null) {
             $icon = 'icon-check';
-            $read = Lang::get('bedard.contact::lang.messages.read', ['date' => $this->read_at->diffForHumans() ]);
+            $read = Lang::get('bedard.contact::lang.messages.read_at_date', ['date' => $this->read_at->diffForHumans() ]);
         }
 
-        return "<i class='{ $icon }'></i> <span>{ $read }</span>";
+        return "<i class='$icon'></i> <span>$read</span>";
     }
 
     /**

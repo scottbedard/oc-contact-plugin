@@ -52,6 +52,11 @@ class Messages extends Controller
         return $this->listRefresh();
     }
 
+    /**
+     * Read an individual message
+     *
+     * @return void
+     */
     public function read($id)
     {
         $this->vars['message'] = Message::read($id);
