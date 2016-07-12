@@ -33,6 +33,7 @@ return [
         'read_at_date' => 'Read :date',
         'read_message' => 'Read message',
         'sent_at' => 'Date Sent',
+        'sent_timesinse' => 'Sent :timesince',
         'status' => 'Status',
         'unread' => 'Not read',
     ],

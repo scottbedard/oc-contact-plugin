@@ -24,6 +24,10 @@
             <h4><?= e(trans('bedard.contact::lang.messages.email')) ?></h4>
             <p class="oc-icon-envelope-o"><?= $message->email ?></p>
         </div>
+        <div class="scoreboard-item title-value">
+            <h4><?= e(trans('bedard.contact::lang.messages.sent_timesinse', ['timesince' => $message->created_at->diffForHumans() ])) ?></h4>
+            <p class="oc-icon-calendar"><?= $message->created_at->format("M jS, Y") ?></p>
+        </div>
     </div>
 
     <div class="callout fade in callout-info no-icon">
